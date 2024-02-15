@@ -19,11 +19,13 @@ DEFAULT_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
 
 class RagasEmbeddings(HuggingFaceEmbedding):
-    def validate_api_key(self):
-        """
-        No Validation for BAAI/bge-small-en-v1.5 Embeddings
-        """
-        pass
+    model_name = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+    if model_name == None:
+        def validate_api_key(self):
+            """
+            No Validation for BAAI/bge-small-en-v1.5 Embeddings
+            """
+            pass
 
 
 class OpenAIEmbeddings(BaseOpenAIEmbeddings, RagasEmbeddings):
@@ -161,5 +163,5 @@ class HuggingfaceEmbeddings(RagasEmbeddings):
 
 
 def embedding_factory() -> RagasEmbeddings:
-    embeddings = DEFAULT_MODEL_NAME
+    embeddings = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
     return embeddings
