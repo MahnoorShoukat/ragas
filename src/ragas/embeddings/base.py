@@ -17,10 +17,10 @@ from ragas.utils import NO_KEY
 DEFAULT_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
 
-class RagasEmbeddings(Embeddings):
+class RagasEmbeddings(DEFAULT_MODEL_NAME):
     def validate_api_key(self):
         """
-        Validates that the api key is set for the Embeddings
+        No Validation for BAAI/bge-small-en-v1.5 Embeddings
         """
         pass
 
@@ -160,5 +160,5 @@ class HuggingfaceEmbeddings(RagasEmbeddings):
 
 
 def embedding_factory() -> RagasEmbeddings:
-    openai_embeddings = OpenAIEmbeddings()
-    return openai_embeddings
+    embeddings = DEFAULT_MODEL_NAME
+    return embeddings
