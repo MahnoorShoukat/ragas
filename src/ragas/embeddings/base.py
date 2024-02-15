@@ -19,13 +19,13 @@ DEFAULT_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
 
 class RagasEmbeddings(HuggingFaceEmbedding):
-    model_name = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
-    if model_name == None:
-        def validate_api_key(self):
-            """
-            No Validation for BAAI/bge-small-en-v1.5 Embeddings
-            """
-            pass
+    model_name: str = "BAAI/bge-small-en-v1.5"  # Specify model name as a string
+
+    def validate_api_key(self):
+        """
+        No Validation for BAAI/bge-small-en-v1.5 Embeddings
+        """
+        pass
 
 
 class OpenAIEmbeddings(BaseOpenAIEmbeddings, RagasEmbeddings):
