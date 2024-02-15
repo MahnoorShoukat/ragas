@@ -10,6 +10,7 @@ from langchain.embeddings import AzureOpenAIEmbeddings as BaseAzureOpenAIEmbeddi
 from langchain.embeddings import OpenAIEmbeddings as BaseOpenAIEmbeddings
 from langchain.schema.embeddings import Embeddings
 from pydantic.dataclasses import dataclass
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
 from ragas.exceptions import AzureOpenAIKeyNotFound, OpenAIKeyNotFound
 from ragas.utils import NO_KEY
@@ -17,7 +18,7 @@ from ragas.utils import NO_KEY
 DEFAULT_MODEL_NAME = "BAAI/bge-small-en-v1.5"
 
 
-class RagasEmbeddings(DEFAULT_MODEL_NAME):
+class RagasEmbeddings(HuggingFaceEmbedding):
     def validate_api_key(self):
         """
         No Validation for BAAI/bge-small-en-v1.5 Embeddings
