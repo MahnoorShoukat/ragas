@@ -89,7 +89,7 @@ class AzureOpenAIEmbeddings(BaseAzureOpenAIEmbeddings, RagasEmbeddings):
 
 @dataclass
 class HuggingfaceEmbeddings(RagasEmbeddings):
-    model_name = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+    model_name: str = "BAAI/bge-small-en-v1.5"
     """Model name to use."""
     cache_folder: t.Optional[str] = None
     """Path to store models. 
